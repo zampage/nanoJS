@@ -76,6 +76,11 @@ var nano = function(s) {
       i.innerHTML = v;
     });
   },
+  outerHtml: function() {
+    return this.value.reduce(function(html, item){
+      return html += item.outerHTML;
+    }, '');
+  },
   text: function (v) {
     return this.each(function (i) {
       i.innerText = v;
