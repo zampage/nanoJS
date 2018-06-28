@@ -2,7 +2,9 @@ var nano = function(s) {
     if (typeof s === "string") {
         this.value = Array.prototype.slice.call(document.querySelectorAll(s));
     }
-    if (typeof s === "object") {
+    if (s instanceof NodeList) {
+        this.value = Array.prototype.slice.call(s);
+    }else if (typeof s === "object") {
         this.value = [s];
     }
 };
@@ -132,4 +134,11 @@ var nano = function(s) {
 
 var $ = function(selector) {
   return new nano(selector);
+};
+
+$.create = function(html){
+  var template = document.createElement('template');
+  template.innerHTML = html.trim();
+  var nodes = template.content.childNodes;
+  return new nano(nodes);
 };
