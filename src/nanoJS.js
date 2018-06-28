@@ -102,21 +102,25 @@ var nano = function(s) {
   },
   insertBefore: function (v) {
     return this.each(function (i) {
+      v = v instanceof nano ? v.outerHtml() : v;
       i.insertAdjacentHTML("beforeBegin",v);
     });
   },
   insertAfter: function (v) {
     return this.each(function (i) {
+      v = v instanceof nano ? v.outerHtml() : v;
       i.insertAdjacentHTML("afterEnd",v);
     });
   },
   insertFirst: function (v) {
     return this.each(function (i) {
+      v = v instanceof nano ? v.outerHtml() : v;
       i.insertAdjacentHTML("afterBegin",v);
     });
   },
   insertLast: function (v) {
     return this.each(function (i) {
+      v = v instanceof nano ? v.outerHtml() : v;
       i.insertAdjacentHTML("beforeEnd",v);
     });
   },
