@@ -88,9 +88,15 @@ var nano = function(s) {
     }, '');
   },
   text: function (v) {
-    return this.each(function (i) {
-      i.innerText = v;
-    });
+    if(v !== undefined){
+      return this.each(function (i) {
+        i.innerText = v;
+      });
+    }else{
+      return this.value.reduce(function(text, item){
+        return text += item.innerText;
+      }, '');
+    }
   },
   insertBefore: function (v) {
     return this.each(function (i) {
