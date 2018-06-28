@@ -72,9 +72,15 @@ var nano = function(s) {
     });
   },
   html: function (v) {
-    return this.each(function (i) {
-      i.innerHTML = v;
-    });
+    if(v !== undefined){
+      return this.each(function (i) {
+        i.innerHTML = v;
+      });
+    }else{
+      return this.value.reduce(function(html, item){
+        return html += item.innerHTML;
+      }, '');
+    }
   },
   outerHtml: function() {
     return this.value.reduce(function(html, item){
